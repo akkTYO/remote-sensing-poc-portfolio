@@ -29,6 +29,7 @@ GEEやQGISでのデータ処理から解析までの**一連の学習とPoC実�
 ---
 
 ## 📂 Repository Structure
+
 remote-sensing-poc-portfolio/
 ├── README.md : このファイル。リポジトリの概要と使い方を記述。
 ├── LICENSE : MIT などのライセンスを明記。
@@ -37,3 +38,5 @@ remote-sensing-poc-portfolio/
 ├── projects/ : PoC ごとにフォルダを分けて整理（例：ethiopia-2017-basemap/）。
 ├── outputs/ : サムネイル画像や軽量GeoTIFFなどを保存。
 └── docs/ : Qiitaリンク、提案資料、学習ノートなどの補足ドキュメント。
+
+
