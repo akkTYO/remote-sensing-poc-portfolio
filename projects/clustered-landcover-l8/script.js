@@ -1,33 +1,37 @@
-# Clustered Landcover Classification with Landsat 8 (Unsupervised)
+// Step 1: Define the region of interest (ROI)
+var region = ee.Geometry.Rectangle(31.56, -26.24, 31.78, -26.09);
+Map.addLayer(region, {}, "region");
+Map.centerObject(region, 10);
 
-This project demonstrates unsupervised landcover classification using K-means clustering on Landsat 8 Surface Reflectance data via Google Earth Engine (GEE).
+// Step 2: Load Landsat 8 SR imagery
+var image = ee.ImageCollection("LANDSAT/LC08/C02/T1_L2")
+  .filterDate("2017-01-01", "2017-12-31")
+  .filterBounds(region)
+  .sort("CLOUD_COVER")
+  .first();
 
-## ✅ Overview
+// Step 3: Visualize the natural color image
+var visParams = {
+  bands: ["SR_B4", "SR_B3", "SR_B2"],
+  min: 0,
+  max: 3000,
+  gamma: 1.4
+};
+Map.addLayer(image.clip(region), visParams, "Landsat RGB");
 
-- **Area of Interest**: South Africa (rectangle bounding box)
-- **Sensor**: Landsat 8 Collection 2, Level 2 Surface Reflectance
-- **Date Range**: 2017-01-01 to 2017-12-31
-- **Method**: Unsupervised classification using K-means (15 clusters)
-- **Tool**: Google Earth Engine JavaScript API
+// Step 4: Select bands for clustering (reflectance only)
+var bands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
+var imageForClustering = image.select(bands);
 
-## 📂 Files
+var training = imageForClustering.sample({
+  region: region,
+  scale: 30,
+  numPixels: 5000
+});
 
-- `script.js`: The full Earth Engine script for clustering
-- `map_l8_clustered_landcover_2017_southafrica.png`: Output visualization (15-class landcover clusters)
-- `composite_info.md`: Description and context
+// Step 5: Instantiate the clusterer and train it
+var clusterer = ee.Clusterer.wekaKMeans(15).train(training);
+var result = imageForClustering.cluster(clusterer);
 
-## 🌍 Use Cases
-
-- Pre-survey landcover screening
-- Change detection without training data
-- Unlabeled region classification for PoC, education, or disaster assessment
-
-## 🔗 Related Article (Qiita, Japanese)
-
-[Google Earth Engine（GEE）を使って衛星画像×機械学習で土地被覆分類](https://qiita.com/akkTYO/items/b6c9614c797003336b2c)
-
----
-
-**Filename Convention**:  
-`map_l8_clustered_landcover_2017_southafrica.png`  
-→ `[type]_[sensor]_[processing]_[year|region]`
+// Step 6: Visualize the clusters
+Map.addLayer(result.clip(region).randomVisualizer(), {}, "clusters");
