@@ -15,8 +15,4 @@ This project demonstrates how to generate a cloud-free RGB composite image using
 - [script.js](./script.js)
 
 ## Output
-- ![output_map](./output_map.png)
-
-## Notes
-- Exported GeoTIFF: `export_sample.tif`
-- Area of Interest: Ethiopia (as an example; generalizable)
+- ![output_map](map_l8_rgb_cloudfree_2017.png)
