@@ -1,4 +1,4 @@
-# 🌍 Remote Sensing PoC & Portfolio
+# Remote Sensing PoC & Portfolio
 
 このリポジトリは、Google Earth Engine（GEE）や QGIS を活用した、
 衛星データの可視化・解析・予測モデル構築のための学習とPoCを蓄積するポートフォリオです。
@@ -7,7 +7,7 @@
 
 ---
 
-## 🚀 Vision
+## Vision
 
 本リポジトリの最終目標は、地球規模で深刻化する水領域の課題（例：水資源、水環境、気候変動、異常気象、濁度、洪水、干ばつ）に対して、  
 予測モデルや異常検知モデルを構築し、早期警戒・対処・意思決定支援に貢献することです。
@@ -18,7 +18,7 @@ GEE や QGIS を単なる「可視化」や「事後報告」のツールで終�
 
 ---
 
-## 🎯 Purpose
+## Purpose
 
 - GEE・QGIS を用いた衛星データ解析スキルの体系的かつ再現可能な学習記録
 - 提案書やPoC提出に活用できる 信頼性のあるProof-of-Concept（PoC）
@@ -26,7 +26,7 @@ GEE や QGIS を単なる「可視化」や「事後報告」のツールで終�
 
 ---
 
-## 🛠 Technologies
+## Technologies
 
 - Google Earth Engine**（JavaScript API）  
 - QGIS（地理情報可視化・空間解析）  
@@ -34,7 +34,7 @@ GEE や QGIS を単なる「可視化」や「事後報告」のツールで終�
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 ```
 remote-sensing-poc-portfolio/
 ├── README.md : このファイル。リポジトリの概要と使い方を記述。
