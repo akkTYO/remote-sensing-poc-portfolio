@@ -12,11 +12,9 @@ using K-means clustering on Landsat 8 Surface Reflectance data via Google Earth 
 - **Method**: Unsupervised classification using K-means (15 clusters)
 - **Tool**: Google Earth Engine JavaScript API
 
-## Files
+## Output
 
-- `script.js`: The full Earth Engine script for clustering
-- `map_l8_clustered_landcover_2017_southafrica.png`: Output visualization (15-class landcover clusters)
-- `composite_info.md`: Description and context
+- ![](map_l8_clustered_landcover_2017_southafrica.png)
 
 ## Use Cases
 
